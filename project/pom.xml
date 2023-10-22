@@ -41,6 +41,13 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.22</version> <!-- 使用时请检查最新版本 -->
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
