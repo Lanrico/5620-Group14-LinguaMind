@@ -2,15 +2,15 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { Route, Routes } from "react-router-dom";
 import React from "react";
-import MediaList from "./components/mediaList";
-import AddMedia from "./components/addMedia";
-import Media from "./components/media";
 import { createTheme, ThemeProvider } from "@mui/material";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { store } from './components/userProfileInfo/store';
 
-import HomePage from "./pages/homePage";
-import MovieDetailPage from "./pages/MovieDetailPage";
 import SignUpPage from "./pages/signUpPage";
+import AuthContext from "./context/authContext";
+import LoginPage from "./pages/loginPage";
+import HomePage from "./pages/homePage";
+import { Provider } from "react-redux";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -25,15 +25,11 @@ const queryClient = new QueryClient({
 const theme = createTheme({
   palette: {
     primary: {
-      // light: '#baffff',
       main: '#3accc0',
-      // dark: '#47c8c0',
-      contrastText: '#000',
+      contrastText: '#fff',
     },
     secondary: {
-      // light: '#ff62b8',
       main: '#ff1688',
-      // dark: '#c6005b',
       contrastText: '#fff',
     },
   },
@@ -42,16 +38,19 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<MediaList />} />
-            <Route path="/homepage" element={<HomePage />} />
-            <Route path="/register" element={<SignUpPage />} />
-            <Route path="/medias/movie/:id" element={<MovieDetailPage />} />
-            <Route path="/add" element={<AddMedia />} />
-            {/* <Route path="/medias/:id" element={<Media />} /> */}
-          </Routes>
-        </BrowserRouter>
+        <Provider store={store}>
+          <BrowserRouter>
+            <AuthContext>
+              <Routes>
+                <Route path="" element={<LoginPage />} />
+                {/* <Route path="/register" element={<SignUpPage />} /> */}
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/register" element={<SignUpPage />} />
+                <Route path="/main/student/:user_id/:tab?" element={<HomePage />} />
+              </Routes>
+            </AuthContext>
+          </BrowserRouter>
+        </Provider>
       </ThemeProvider>
     </QueryClientProvider>
   )
