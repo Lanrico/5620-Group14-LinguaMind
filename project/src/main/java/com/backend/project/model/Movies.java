@@ -47,9 +47,7 @@ public class Movies {
     public String getRelease_date() {
         return release_date;
     }
-
-
-
+    
     public String getPoster_path() {
         return poster_path;
     }
