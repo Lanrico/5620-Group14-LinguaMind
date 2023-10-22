@@ -14,7 +14,7 @@ public class GPTModel {
 
     @Data
     public static class Request {
-        private String model = "gpt-3.5-turbo";
+        private String model = "gpt-3.5-turbo-16k";
         private List<Message> messages;
         private Double temperature = 1.0;
         private Integer max_tokens = 256;
