@@ -2,6 +2,8 @@ package com.backend.project.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
+
+import javax.persistence.Entity;
 import java.util.List;
 
 public class GPTModel {
@@ -39,6 +41,11 @@ public class GPTModel {
         private Message message;
         private String finish_reason;
     }
+
+
+
+
+
 
 
 }

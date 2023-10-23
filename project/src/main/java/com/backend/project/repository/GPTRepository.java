@@ -2,6 +2,7 @@ package com.backend.project.repository;
 
 import com.backend.project.model.GPTModel;
 import com.backend.project.model.GPTRequestBody;
+import com.backend.project.model.LanguageEnum;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -31,7 +32,16 @@ public class GPTRepository {
 
         // Predefined prompt as the system role
         GPTModel.Message systemMessage = new GPTModel.Message();
+
         systemMessage.setRole("system");
+        String language_choice=gptRequestBody.getChoice();
+
+        for(LanguageEnum languageEnum:LanguageEnum.values()){
+            if(languageEnum.getLanguage().equals(language_choice)){
+                systemMessage.setContent("You now act as an online assistant for students article transcription, please translate the message to "+language_choice+".");
+            }
+        }
+        /*
         if(gptRequestBody.getChoice().equals("1")){
             systemMessage.setContent("You now act as an online assistant for students article transcription, please translate the message to Simplified Chinese.");
         } else if (gptRequestBody.getChoice().equals("2")) {
@@ -46,7 +56,7 @@ public class GPTRepository {
                     "generate articles based on keywords, and evaluate students.");
         }
 
-
+    */
         // User's question
         GPTModel.Message userMessage = new GPTModel.Message();
         userMessage.setRole("user");
