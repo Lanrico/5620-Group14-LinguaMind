@@ -40,4 +40,5 @@ public class GPTModel {
         private String finish_reason;
     }
 
+
 }
