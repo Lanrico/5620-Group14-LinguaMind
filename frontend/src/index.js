@@ -46,7 +46,7 @@ const App = () => {
                 {/* <Route path="/register" element={<SignUpPage />} /> */}
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<SignUpPage />} />
-                <Route path="/main/student/:user_id/:tab?" element={<HomePage />} />
+                <Route path="/main/:user_id/:tab?" element={<HomePage />} />
               </Routes>
             </AuthContext>
           </BrowserRouter>

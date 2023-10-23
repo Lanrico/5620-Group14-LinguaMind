@@ -27,7 +27,7 @@ import AnimateButton from '../../../components/@extended/AnimateButton';
 import userService from '../../../../../api/userService';
 import { AuthContext } from '../../../../../context/authContext.js'
 import { auth } from '../../../../../firebase';
-
+import user from '../../../../../sampleData/user';
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
 import HCaptchaBlock from '../../../../hCaptchaBlock';
 
@@ -89,14 +89,16 @@ const AuthLogin = () => {
             signInWithEmailAndPassword(auth, values.email, values.password)
               .then((userCredential) => {
                 // Signed in 
-                const user = userCredential.user;
+                // const user = userCredential.user;
                 // userService.getByEmail(user.email)
                 //   .then((response) => {
                 //     context.signIn(response.data, values.rememberMe)
                 //     console.log("qwqweqweqwe")
                 //     navigate('/homepage')
                 //   })
-                navigate('/main/student/1')
+                context.signIn(user, values.rememberMe)
+                // navigate('/main/1')
+                navigate(`/main/${user.email}`)
               })
               .catch((error) => {
                 console.log(error);

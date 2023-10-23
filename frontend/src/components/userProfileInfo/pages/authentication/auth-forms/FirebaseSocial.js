@@ -13,6 +13,7 @@ import userService from '../../../../../api/userService';
 import { AuthContext } from '../../../../../context/authContext';
 import { auth } from '../../../../../firebase';
 import { useNavigate } from 'react-router-dom';
+import user from '../../../../../sampleData/user';
 
 const FirebaseSocial = (props) => {
   const theme = useTheme();
@@ -41,14 +42,15 @@ const FirebaseSocial = (props) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
         // The signed-in user info.
-        const user = result.user;
+        // const user = result.user;
         // userService.getByEmail(user.email)
         //   .then((response) => {
         //     console.log(response.data)
         //     context.signIn(response.data)
         //     navigate('/homepage')
         //   })
-        navigate('/main/student/1')
+        context.signIn(user)
+        navigate(`/main/${user.email}`)
         // ...
       }).catch((error) => {
         // Handle Errors here.
@@ -74,18 +76,20 @@ const FirebaseSocial = (props) => {
     signInWithPopup(auth, provider)
       .then((result) => {
         // The signed-in user info.
-        const user = result.user;
+        // const user = result.user;
 
         // This gives you a Facebook Access Token. You can use it to access the Facebook API.
         const credential = FacebookAuthProvider.credentialFromResult(result);
         const accessToken = credential.accessToken;
         console.log(result)
-        userService.getByEmail(user.email)
-          .then((response) => {
-            console.log(response.data)
-            context.signIn(response.data)
-            navigate('/homepage')
-          })
+        // userService.getByEmail(user.email)
+        //   .then((response) => {
+        //     console.log(response.data)
+        //     context.signIn(response.data)
+        //     navigate('/homepage')
+        //   })
+        context.signIn(user)
+        navigate(`/main/${user.email}`)
         // ...
       })
       .catch((error) => {
@@ -130,7 +134,7 @@ const FirebaseSocial = (props) => {
       >
         {!matchDownSM && 'Google'}
       </Button>
-      <Button
+      {/* <Button
         variant="outlined"
         color="primary"
         fullWidth={!matchDownSM}
@@ -139,7 +143,7 @@ const FirebaseSocial = (props) => {
       // onClick={props.action === 'login' ? twitterLoginHandler : twitterRegisterHandler}
       >
         {!matchDownSM && 'Twitter'}
-      </Button>
+      </Button> */}
       <Button
         variant="outlined"
         color="primary"

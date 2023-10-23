@@ -12,7 +12,7 @@ import { AuthContext } from '../../../../../../../context/authContext';
 const Navigation = () => {
     const authContext = useContext(AuthContext);
     console.log(authContext.userProfile.type);
-    const items = authContext.userProfile.type === 2 ? menuItem.adminItem : menuItem.items;
+    const items = authContext.userProfile.type === 'admin' ? menuItem.adminItems : authContext.userProfile.type === 'teacher' ? menuItem.teacherItems : menuItem.studentItems;
     const navGroups = items.map((item) => {
         switch (item.type) {
             case 'group':

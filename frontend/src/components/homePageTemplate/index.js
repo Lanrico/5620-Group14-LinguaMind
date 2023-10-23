@@ -1,4 +1,4 @@
-import { Grid, Paper, Typography, useTheme } from "@mui/material";
+import { Button, Grid, Paper, Typography, useTheme } from "@mui/material";
 import PageTemplate from "../pageTemplate";
 
 import { useContext } from "react";
@@ -6,11 +6,13 @@ import DrawerContent from "../userProfileInfo/layout/MainLayout/Drawer/DrawerCon
 import { AuthContext } from "../../context/authContext";
 import { Link, useParams } from "react-router-dom";
 import img from '../../images/Unauthenticate.webp'
+import UserProfile from "../homePageTabs/userProfile";
 
 const HomePageTemplete = (props) => {
   const theme = useTheme();
   const { tab } = useParams();
   const authContext = useContext(AuthContext);
+
 
   console.log(props.user)
   return (
@@ -30,47 +32,47 @@ const HomePageTemplete = (props) => {
                 </Grid>
                 <Grid xs={9} p={3}>
                   {
-                    tab === "checkReview" ?
+                    tab === "AI_translation" ?
                       (<>
-                        {/* <CheckReview /> */}
+
                       </>) :
-                      tab === "proUserRequest" ?
+                      tab === "AI_schedule" ?
                         (<>
-                          {/* <ProUserRequest /> */}
+
                         </>) :
-                        tab === "updateData" ?
+                        tab === "AI_polish" ?
                           (<>
-                            {/* <UpdateData /> */}
+
                           </>) :
                           tab === "profile" ?
                             (<>
-                              {/* <UserProfile /> */}
+                              <UserProfile />
                             </>) :
-                            tab === "history" ?
-                              (
-                                <>
-                                  {/* <History /> */}
-                                </>
-                              ) :
-                              tab === "favourite" ?
-                                (
-                                  <>
-                                    {/* <Favourite /> */}
-                                  </>
-                                ) :
-                                tab === "recommendation" ?
-                                  (
-                                    <>
-                                      {/* <Recommendation /> */}
-                                    </>
-                                  ) :
-                                  tab === "interestConfig" ?
-                                    (
-                                      <>
-                                        {/* <InterestConfig /> */}
-                                      </>
-                                    ) :
-                                    null
+                            tab === "AI_notification" ?
+                              (<>
+
+                              </>) :
+                              tab === "AI_email" ?
+                                (<>
+
+                                </>) :
+                                tab === "AI_teaching_aid" ?
+                                  (<>
+
+                                  </>) :
+                                  tab === "maintenance" ?
+                                    (<>
+
+                                    </>) :
+                                    tab === "permission_management" ?
+                                      (<>
+
+                                      </>) :
+                                      tab === "software_update" ?
+                                        (<>
+
+                                        </>) :
+                                        <UserProfile />
                   }
                 </Grid>
               </Grid>

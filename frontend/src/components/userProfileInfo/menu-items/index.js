@@ -1,14 +1,16 @@
 // project import
-import interest from './interest';
+import adminApps from './adminApps';
+import studentApps from './studentApps';
+import teacherApps from './teacherApps';
 import userProfile from './userProfile';
-import config from './config';
-import support from './support';
-import adminFunction from './adminFunciton';
+
 
 // ==============================|| MENU ITEMS ||============================== //
 const menuItems = {
-    adminItem: [adminFunction, userProfile, interest, config, support],
-    items: [userProfile, interest, config, support]
+    adminItems: [userProfile, adminApps],
+    studentItems: [userProfile, studentApps],
+    teacherItems: [userProfile, teacherApps]
+    // items: [userProfile, studentApps, config, support],
 };
 
 export default menuItems;

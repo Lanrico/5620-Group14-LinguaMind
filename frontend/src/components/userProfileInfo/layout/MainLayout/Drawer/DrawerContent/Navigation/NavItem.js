@@ -26,7 +26,7 @@ const NavItem = ({ item, level }) => {
         itemTarget = '_blank';
     }
 
-    let listItemProps = { component: forwardRef((props, ref) => <NavLink ref={ref} {...props} to={`/${authContext.userProfile.type}/${authContext.userProfile.id}/${item.url}`} target={itemTarget} />) };
+    let listItemProps = { component: forwardRef((props, ref) => <NavLink ref={ref} {...props} to={`/main/${authContext.userProfile.email}/${item.url}`} target={itemTarget} />) };
     if (item?.external) {
         listItemProps = { component: 'a', href: item.url, target: itemTarget };
     }

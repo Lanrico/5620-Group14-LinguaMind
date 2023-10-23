@@ -96,7 +96,7 @@ const AuthRegister = () => {
                     console.log(response.data)
                     context.signIn(response.data, true)
                   })
-                navigate("/homepage")
+                navigate("/main/1")
                 // ...
               })
               .catch((error) => {
