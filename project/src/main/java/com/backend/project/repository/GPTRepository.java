@@ -1,6 +1,7 @@
 package com.backend.project.repository;
 
 import com.backend.project.model.GPTModel;
+import com.backend.project.model.GPTRequestBody;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -9,6 +10,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
@@ -24,20 +26,31 @@ public class GPTRepository {
 
     private static final String ENDPOINT_URL = "https://api.openai.com/v1/chat/completions";  // Updated endpoint URL
 
-    public GPTModel.Response callGPT(String userQuestion) {
+    public GPTModel.Response callGPT(GPTRequestBody gptRequestBody) {
         RestTemplate restTemplate = new RestTemplate();
 
         // Predefined prompt as the system role
         GPTModel.Message systemMessage = new GPTModel.Message();
         systemMessage.setRole("system");
-        systemMessage.setContent("You now act as an online assistant for students and teachers, " +
-                "responsible for helping them translate articles, polish articles, format class schedules, " +
-                "generate articles based on keywords, and evaluate students.");
+        if(gptRequestBody.getChoice().equals("1")){
+            systemMessage.setContent("You now act as an online assistant for students article transcription, please translate the message to Simplified Chinese.");
+        } else if (gptRequestBody.getChoice().equals("2")) {
+            systemMessage.setContent("You now act as an online assistant for students article transcription, please translate the message to English");
+        }
+        else if (gptRequestBody.getChoice().equals("3")) {
+            systemMessage.setContent("You now act as an online assistant for students article transcription, please translate the message to Japanese");
+        }
+        else {
+            systemMessage.setContent("You now act as an online assistant for students and teachers, " +
+                    "responsible for helping them translate articles, polish articles, format class schedules, " +
+                    "generate articles based on keywords, and evaluate students.");
+        }
+
 
         // User's question
         GPTModel.Message userMessage = new GPTModel.Message();
         userMessage.setRole("user");
-        userMessage.setContent(userQuestion);
+        userMessage.setContent(gptRequestBody.getMessage());
 
         // Create messages list
         List<GPTModel.Message> messages = new ArrayList<>();

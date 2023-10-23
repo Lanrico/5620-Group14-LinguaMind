@@ -24,7 +24,7 @@ public class GPTController {
 
         System.out.println(gptRequestBody.getChoice());
         System.out.println(gptRequestBody.getMessage());
-        return openAIService.askGPT(gptRequestBody.getMessage());
+        return openAIService.askGPT(gptRequestBody);
     }
 
 }
