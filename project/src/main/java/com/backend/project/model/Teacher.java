@@ -1,8 +1,11 @@
 package com.backend.project.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
 @Entity
+@Data
 @Table(name = "teacher")
 public class Teacher {
 

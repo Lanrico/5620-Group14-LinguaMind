@@ -1,9 +1,12 @@
 package com.backend.project.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Data
 @Table(name = "user_account")
 public class UserAccount {
 
@@ -19,7 +22,6 @@ public class UserAccount {
     private String firstname;
     @Column(name = "lastname")
     private String lastname;
-
     @Column(name = "email", unique = true)
     private String email;
     @Column(name = "phone")

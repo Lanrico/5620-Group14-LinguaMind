@@ -1,9 +1,12 @@
 package com.backend.project.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Data
 @Table(name = "ai_history")
 public class AiHistory {
 
