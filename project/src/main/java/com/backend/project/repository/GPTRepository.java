@@ -41,6 +41,18 @@ public class GPTRepository {
                 systemMessage.setContent("You now act as an online assistant for students article transcription, please translate the message to "+language_choice+".");
             }
         }
+
+        if(gptRequestBody.getChoice().equals("schedule")){
+            systemMessage.setContent("You now act as an online assistant for schedule management, please transfer the message below to a schedule management timetable");
+        }
+
+        if(gptRequestBody.getChoice().equals("resume")){
+            systemMessage.setContent("You now act as an online assistant for personal resume generation, please generate a resume based on the message below, no less than 500 words");
+        }
+
+        if(gptRequestBody.getChoice().equals("emotion master")){
+            systemMessage.setContent("You now act as an online emotion master for helping people with emotional problems. My girlfriend send me the message to me and she seems very angry, our love story may come to an end. Please help me to response to her message with the tone of lickspittle and minimize the possibility of emotional breakdown ");
+        }
         /*
         if(gptRequestBody.getChoice().equals("1")){
             systemMessage.setContent("You now act as an online assistant for students article transcription, please translate the message to Simplified Chinese.");
