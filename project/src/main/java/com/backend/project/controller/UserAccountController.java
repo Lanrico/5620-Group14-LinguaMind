@@ -1,23 +1,38 @@
 package com.backend.project.controller;
 
+import com.backend.project.Service.UserAccountService;
 import com.backend.project.model.UserAccount;
 import com.backend.project.repository.UserAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/useraccounts")
 public class UserAccountController {
 
     @Autowired
-    private UserAccountRepository userAccountRepository;
+    private UserAccountService userAccountService;
 
     @GetMapping("/show")
     public List<UserAccount> getAllUserAccounts() {
-        return userAccountRepository.findAll();
+        return userAccountService.getAllUserAccounts();
     }
+
+    @PostMapping("/create")
+    public ResponseEntity<?> createUser(@RequestBody UserAccount userAccount) {
+        try {
+            userAccountService.createUser(userAccount);
+            Map<String, String> response = new HashMap<>();
+            response.put("message", "User created successfully");
+            return ResponseEntity.ok(response);
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
 }
