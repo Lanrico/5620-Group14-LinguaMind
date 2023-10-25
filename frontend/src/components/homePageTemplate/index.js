@@ -8,6 +8,7 @@ import { Link, useParams } from "react-router-dom";
 import img from '../../images/Unauthenticate.webp'
 import UserProfile from "../homePageTabs/userProfile";
 import AiTranslationTabPane from "../AiTranslationTabPane";
+import AiContentPolishTabPane from "../AiContentPolishTabPane";
 
 const HomePageTemplete = (props) => {
   const theme = useTheme();
@@ -43,7 +44,7 @@ const HomePageTemplete = (props) => {
                         </>) :
                         tab === "AI_polish" ?
                           (<>
-
+                            <AiContentPolishTabPane />
                           </>) :
                           tab === "profile" ?
                             (<>
