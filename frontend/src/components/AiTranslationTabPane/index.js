@@ -33,7 +33,7 @@ const AiTranslationTabPane = () => {
                 },
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer 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'
+                    'Authorization': 'Bearer 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'
                 }
             })
 
