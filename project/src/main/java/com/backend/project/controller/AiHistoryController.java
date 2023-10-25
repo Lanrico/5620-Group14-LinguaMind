@@ -1,7 +1,7 @@
 package com.backend.project.controller;
 
+import com.backend.project.Service.AiHistoryService;
 import com.backend.project.model.AiHistory;
-import com.backend.project.repository.AiHistoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,10 +14,12 @@ import java.util.List;
 public class AiHistoryController {
 
     @Autowired
-    private AiHistoryRepository aiHistoryRepository;
+    private AiHistoryService aiHistoryService;
 
-    @GetMapping("/show")
+    @GetMapping("/showAll")
     public List<AiHistory> getAllAiHistories() {
-        return aiHistoryRepository.findAll();
+        return aiHistoryService.getAllHistories();
     }
+
+    // ... other controller methods as needed...
 }

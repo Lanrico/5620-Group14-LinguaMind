@@ -18,7 +18,7 @@ public class Teacher {
     private String description;
 
     @OneToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    @JoinColumn(name = "email", referencedColumnName = "email")
     private UserAccount userAccount;
 
     // Standard getters and setters...

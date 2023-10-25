@@ -1,7 +1,5 @@
 package com.backend.project.model;
-
 import lombok.Data;
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -16,7 +14,7 @@ public class AiHistory {
     private int historyId;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    @JoinColumn(name = "email", referencedColumnName = "email")
     private UserAccount userAccount;
 
     @Enumerated(EnumType.STRING)
@@ -38,6 +36,4 @@ public class AiHistory {
     public enum RoleType {
         MESSAGE_GENERATOR, ARTICLE_POLISH, TRASLATOR
     }
-
-    // Standard getters and setters...
 }
