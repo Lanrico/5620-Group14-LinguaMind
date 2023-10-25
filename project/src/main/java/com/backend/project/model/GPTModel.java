@@ -1,7 +1,10 @@
 package com.backend.project.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class GPTModel {
@@ -39,4 +42,14 @@ public class GPTModel {
         private Message message;
         private String finish_reason;
     }
+
+    @Data
+    @AllArgsConstructor
+    public static class Schedule{
+        private LocalDateTime time;
+        private String Description;
+        private String importance;
+    }
+
+
 }

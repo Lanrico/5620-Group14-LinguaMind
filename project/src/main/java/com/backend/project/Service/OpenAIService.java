@@ -15,7 +15,7 @@ public class OpenAIService {
     public Object askGPT(GPTRequestBody requestBody) {
         // 假设每次请求中只有一个用户消息
         //String userQuestion = frontendRequest.getMessages().get(frontendRequest.getMessages().size() - 1).getContent();
-        return gptRepository.callGPT(requestBody).getChoices().get(0).getMessage();
+        return gptRepository.callGPT(requestBody);
     }
 }
 

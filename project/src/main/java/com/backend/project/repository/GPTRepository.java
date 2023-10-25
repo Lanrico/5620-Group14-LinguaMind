@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -27,7 +28,7 @@ public class GPTRepository {
 
     private static final String ENDPOINT_URL = "https://api.openai.com/v1/chat/completions";  // Updated endpoint URL
 
-    public GPTModel.Response callGPT(GPTRequestBody gptRequestBody) {
+    public Object callGPT(GPTRequestBody gptRequestBody) {
         RestTemplate restTemplate = new RestTemplate();
 
         // Predefined prompt as the system role
@@ -43,7 +44,9 @@ public class GPTRepository {
         }
 
         if(gptRequestBody.getChoice().equals("schedule")){
-            systemMessage.setContent("You now act as an online assistant for schedule management, please transfer the message below to a schedule management timetable");
+            systemMessage.setContent("You now act as an online assistant for schedule management, please transfer the message below to a schedule management timetable with a format like this:|time|description|importance, the time should have formatt : yyyy-mm-ddThh:mm you should evaluate the importance of each task and give it high or low or medium importance\n" +
+                    "and sort it by time ascend\n" +
+                    "do not output any other text");
         }
 
         if(gptRequestBody.getChoice().equals("resume")){
@@ -52,6 +55,10 @@ public class GPTRepository {
 
         if(gptRequestBody.getChoice().equals("emotion master")){
             systemMessage.setContent("You now act as an online emotion master for helping people with emotional problems. My girlfriend send me the message to me and she seems very angry, our love story may come to an end. Please help me to response to her message with the tone of lickspittle and minimize the possibility of emotional breakdown ");
+        }
+
+        if(gptRequestBody.getChoice().equals("email")){
+            systemMessage.setContent("You now act as an online email generator for helping people with writing email, I am a teacher, please generate the email with formal style based on the message below.");
         }
         /*
         if(gptRequestBody.getChoice().equals("1")){
@@ -104,6 +111,24 @@ public class GPTRepository {
             }
         }
 
-        return response;
+        if(gptRequestBody.getChoice().equals("schedule")){
+            String data = response.getChoices().get(0).getMessage().getContent();
+            List<GPTModel.Schedule> schedules = new ArrayList<>();
+
+            String[] rows = data.split("\n");
+            for (int i = 1; i < rows.length; i++) { // start from 1 to skip header row
+                String[] columns = rows[i].split("\\|");
+                LocalDateTime time = LocalDateTime.parse(columns[1]);
+                String description = columns[2];
+                String importance = columns[3];
+                schedules.add(new GPTModel.Schedule(time, description, importance));
+            }
+            return schedules;
+
+        }
+
+
+
+        return response.getChoices().get(0).getMessage().getContent();
     }
 }
