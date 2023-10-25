@@ -11,20 +11,16 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Slf4j
 @Repository
 public class GPTRepository {
-
-    @Value("${openai.apikey}")
-    private String apiKey;
+    private String apiKey = "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";
 
     private static final String ENDPOINT_URL = "https://api.openai.com/v1/chat/completions";  // Updated endpoint URL
 
@@ -44,38 +40,35 @@ public class GPTRepository {
         }
 
         if(gptRequestBody.getChoice().equals("schedule")){
-            systemMessage.setContent("You now act as an online assistant for schedule management, please transfer the message below to a schedule management timetable with a format like this:|time|description|importance, the time should have formatt : yyyy-mm-ddThh:mm you should evaluate the importance of each task and give it high or low or medium importance\n" +
+            systemMessage.setContent("You now act as an online assistant for schedule management, " +
+                    "please transfer the message below to a schedule management timetable with a format like this:" +
+                    "|time|description|importance, the time should have formatt : yyyy-mm-ddThh:mm " +
+                    "you should evaluate the importance of each task and give it high or low or medium importance\n" +
                     "and sort it by time ascend\n" +
                     "do not output any other text");
         }
 
         if(gptRequestBody.getChoice().equals("resume")){
-            systemMessage.setContent("You now act as an online assistant for personal resume generation, please generate a resume based on the message below, no less than 500 words");
+            systemMessage.setContent("You now act as an online assistant for personal resume generation, " +
+                    "please generate a resume based on the message below, no less than 500 words");
         }
 
         if(gptRequestBody.getChoice().equals("emotion master")){
-            systemMessage.setContent("You now act as an online emotion master for helping people with emotional problems. My girlfriend send me the message to me and she seems very angry, our love story may come to an end. Please help me to response to her message with the tone of lickspittle and minimize the possibility of emotional breakdown ");
+            systemMessage.setContent("You now act as an online emotion master for helping people with emotional problems. " +
+                    "My girlfriend send me the message to me and she seems very angry, our love story may come to an end. " +
+                    "Please help me to response to her message with the tone of lickspittle and minimize the possibility of emotional breakdown ");
         }
 
         if(gptRequestBody.getChoice().equals("email")){
-            systemMessage.setContent("You now act as an online email generator for helping people with writing email, I am a teacher, please generate the email with formal style based on the message below.");
-        }
-        /*
-        if(gptRequestBody.getChoice().equals("1")){
-            systemMessage.setContent("You now act as an online assistant for students article transcription, please translate the message to Simplified Chinese.");
-        } else if (gptRequestBody.getChoice().equals("2")) {
-            systemMessage.setContent("You now act as an online assistant for students article transcription, please translate the message to English");
-        }
-        else if (gptRequestBody.getChoice().equals("3")) {
-            systemMessage.setContent("You now act as an online assistant for students article transcription, please translate the message to Japanese");
-        }
-        else {
-            systemMessage.setContent("You now act as an online assistant for students and teachers, " +
-                    "responsible for helping them translate articles, polish articles, format class schedules, " +
-                    "generate articles based on keywords, and evaluate students.");
+            systemMessage.setContent("You now act as an online email generator for helping people with writing email, " +
+                    "I am a teacher, please generate the email with formal style based on the message below.");
         }
 
-    */
+        if(gptRequestBody.getChoice().equals("polish")){
+            systemMessage.setContent("You now act as an online assistant for students and teachers to polish their sentences and articles, " +
+                    "please send the polished sentences or articles to user, and do not send any other messages that are not related with sentences or articles." );
+        }
+
         // User's question
         GPTModel.Message userMessage = new GPTModel.Message();
         userMessage.setRole("user");
@@ -123,11 +116,10 @@ public class GPTRepository {
                 String importance = columns[3];
                 schedules.add(new GPTModel.Schedule(time, description, importance));
             }
+            System.out.println(schedules);
             return schedules;
 
         }
-
-
 
         return response.getChoices().get(0).getMessage().getContent();
     }

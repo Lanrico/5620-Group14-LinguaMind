@@ -1,12 +1,15 @@
 package com.backend.project.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
 @Data
 @Table(name = "schedule")
+@AllArgsConstructor
 public class Schedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,7 +20,7 @@ public class Schedule {
     private UserAccount user;
 
     @Column(name = "time")
-    private Date time;
+    private LocalDateTime time;
 
     private String description;
 
