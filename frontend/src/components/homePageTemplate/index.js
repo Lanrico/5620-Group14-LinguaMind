@@ -7,6 +7,7 @@ import { AuthContext } from "../../context/authContext";
 import { Link, useParams } from "react-router-dom";
 import img from '../../images/Unauthenticate.webp'
 import UserProfile from "../homePageTabs/userProfile";
+import AiTranslationTabPane from "../AiTranslationTabPane";
 
 const HomePageTemplete = (props) => {
   const theme = useTheme();
@@ -34,7 +35,7 @@ const HomePageTemplete = (props) => {
                   {
                     tab === "AI_translation" ?
                       (<>
-
+                        <AiTranslationTabPane />
                       </>) :
                       tab === "AI_schedule" ?
                         (<>
