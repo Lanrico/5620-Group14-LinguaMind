@@ -33,6 +33,7 @@ public class AiHistory {
     private String responseResult;
 
     @Column(name = "generate_date")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date generateDate;
 
     @Column(name = "additional_info")
