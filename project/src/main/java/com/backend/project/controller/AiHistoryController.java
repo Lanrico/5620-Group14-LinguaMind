@@ -27,6 +27,7 @@ public class AiHistoryController {
     @PostMapping("/create")
     public ResponseEntity<?> createAiHistory(@RequestParam String email, @RequestBody AiHistory aiHistory) {
         try {
+
             aiHistoryService.createHistory(email, aiHistory.getRoleType(), aiHistory.getRequestContent(), aiHistory.getResponseResult(), new Date(), aiHistory.getAdditionalInfo());
             Map<String, String> response = new HashMap<>();
             response.put("message", "AI History created successfully");

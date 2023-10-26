@@ -26,10 +26,10 @@ public class AiHistory {
     @Column(name = "role_type")
     private RoleType roleType;
 
-    @Column(name = "request_content", length = 2000)
+    @Column(name = "request_content", length = 4000)
     private String requestContent;
 
-    @Column(name = "response_result", length = 2000)
+    @Column(name = "response_result", length = 4000)
     private String responseResult;
 
     @Column(name = "generate_date")

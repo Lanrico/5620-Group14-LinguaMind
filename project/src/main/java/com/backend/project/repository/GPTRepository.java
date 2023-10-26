@@ -27,7 +27,7 @@ public class GPTRepository {
 
     @Autowired
     private UserAccountRepository userAccountRepository;
-    private String apiKey = "";
+    private String apiKey = "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";
 
     private static final String ENDPOINT_URL = "https://api.openai.com/v1/chat/completions";  // Updated endpoint URL
 
@@ -120,8 +120,10 @@ public class GPTRepository {
         aiHistory.setResponseResult(response.getChoices().get(0).getMessage().getContent());
         aiHistory.setGenerateDate(new Date());
         aiHistory.setRoleType(AiHistory.RoleType.valueOf(gptRequestBody.getChoice()));
-
-        if(gptRequestBody.getChoice().equals("schedule")){
+        aiHistoryService.createHistory(email,aiHistory.getRoleType(),
+                aiHistory.getRequestContent(), aiHistory.getResponseResult(),
+                aiHistory.getGenerateDate(),aiHistory.getAdditionalInfo());
+        if(gptRequestBody.getChoice().equals("SCHEDULE_GENERATOR")){
             String data = response.getChoices().get(0).getMessage().getContent();
             List<GPTModel.Schedule> schedules = new ArrayList<>();
 
