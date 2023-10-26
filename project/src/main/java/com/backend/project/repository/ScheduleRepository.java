@@ -8,7 +8,5 @@ import java.util.List;
 
 public interface ScheduleRepository extends JpaRepository<Schedule, Integer> {
     List<Schedule> findByUser_Email(String email);
-
-
 }
 
