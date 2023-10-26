@@ -7,6 +7,7 @@ import { AuthContext } from "../../context/authContext";
 import { Link, useParams } from "react-router-dom";
 import img from '../../images/Unauthenticate.webp'
 import UserProfile from "../homePageTabs/userProfile";
+import AISchedule from "../homePageTabs/AISchedule";
 
 const HomePageTemplete = (props) => {
   const theme = useTheme();
@@ -38,7 +39,7 @@ const HomePageTemplete = (props) => {
                       </>) :
                       tab === "AI_schedule" ?
                         (<>
-
+                          <AISchedule />
                         </>) :
                         tab === "AI_polish" ?
                           (<>
