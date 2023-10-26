@@ -1,26 +1,26 @@
 package com.backend.project.model;
 
 public enum LanguageEnum {
-    ENGLISH("English"),
-    SPANISH("Spanish"),
-    CHINESE("Chinese"),
-    FRENCH("French"),
-    GERMAN("German"),
-    RUSSIAN("Russian"),
-    JAPANESE("Japanese"),
-    PORTUGUESE("Portuguese"),
-    ARABIC("Arabic"),
-    KOREAN("Korean"),
-    ITALIAN("Italian"),
-    DUTCH("Dutch"),
-    SWEDISH("Swedish"),
-    TURKISH("Turkish"),
-    GREEK("Greek"),
-    HINDI("Hindi"),
-    POLISH("Polish"),
-    FINNISH("Finnish"),
-    DANISH("Danish"),
-    NORWEGIAN("Norwegian");
+    ENGLISH("ENGLISH"),
+    SPANISH("SPANISH"),
+    CHINESE("CHINESE"),
+    FRENCH("FRENCH"),
+    GERMAN("GERMAN"),
+    RUSSIAN("RUSSIAN"),
+    JAPANESE("JAPANESE"),
+    PORTUGUESE("PORTUGUESE"),
+    ARABIC("ARABIC"),
+    KOREAN("KOREAN"),
+    ITALIAN("ITALIAN"),
+    DUTCH("DUTCH"),
+    SWEDISH("SWEDISH"),
+    TURKISH("TURKISH"),
+    GREEK("GREEK"),
+    HINDI("HINDI"),
+    POLISH("POLISH"),
+    FINNISH("FINNISH"),
+    DANISH("DANISH"),
+    NORWEGIAN("NORWEGIAN");
 
     private final String language;
 

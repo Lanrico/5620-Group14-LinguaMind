@@ -27,7 +27,7 @@ public class GPTRepository {
 
     @Autowired
     private UserAccountRepository userAccountRepository;
-    private String apiKey = "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";
+    private String apiKey = "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";
 
     private static final String ENDPOINT_URL = "https://api.openai.com/v1/chat/completions";  // Updated endpoint URL
 

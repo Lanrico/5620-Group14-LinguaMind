@@ -44,6 +44,27 @@ public class AiHistory {
         RESUME_GENERATOR,
         EMOTION_MASTER,
         EMAIL_GENERATOR,
-        ARTICLE_POLISH
+        ARTICLE_POLISH,
+
+        ENGLISH,
+        SPANISH,
+        CHINESE,
+        FRENCH,
+        GERMAN,
+        RUSSIAN,
+        JAPANESE,
+        PORTUGUESE,
+        ARABIC,
+        KOREAN,
+        ITALIAN,
+        DUTCH,
+        SWEDISH,
+        TURKISH,
+        GREEK,
+        HINDI,
+        POLISH,
+        FINNISH,
+        DANISH,
+        NORWEGIAN
     }
 }
