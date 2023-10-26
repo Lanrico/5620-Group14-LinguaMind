@@ -40,6 +40,10 @@ public class AiHistory {
     private String additionalInfo;
 
     public enum RoleType {
-        MESSAGE_GENERATOR, ARTICLE_POLISH, TRASLATOR
+        SCHEDULE_GENERATOR,
+        RESUME_GENERATOR,
+        EMOTION_MASTER,
+        EMAIL_GENERATOR,
+        ARTICLE_POLISH
     }
 }

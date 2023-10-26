@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface AiHistoryRepository extends JpaRepository<AiHistory, Integer> {
     //... any other custom queries.
-
+    AiHistory save(AiHistory aiHistory);
 }

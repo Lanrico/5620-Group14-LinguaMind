@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
@@ -19,11 +20,11 @@ public class GPTController {
 //    public GPTModel.Response askGPT(@RequestBody GPTModel.Request request) {
 //        return openAIService.askGPT(request);
 //    }
-    public Object askGPT(@RequestBody GPTRequestBody gptRequestBody) {
+    public Object askGPT(@RequestParam String email, @RequestBody GPTRequestBody gptRequestBody) {
 
         System.out.println(gptRequestBody.getChoice());
         System.out.println(gptRequestBody.getMessage());
-        return openAIService.askGPT(gptRequestBody);
+        return openAIService.askGPT(email,gptRequestBody);
     }
 
 }
