@@ -23,9 +23,9 @@ public class ScheduleController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<?> createSchedule(@RequestBody Schedule schedule) {
+    public ResponseEntity<?> createSchedule(@RequestParam String email, @RequestBody Schedule schedule) {
         try {
-            scheduleService.createSchedule(schedule);
+            scheduleService.createSchedule(email, schedule.getTime(), schedule.getDescription(), schedule.getImportance());
             Map<String, String> response = new HashMap<>();
             response.put("message", "Schedule created successfully");
             return ResponseEntity.ok(response);
@@ -33,6 +33,7 @@ public class ScheduleController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+
 
     @GetMapping("/user/{email}")
     public ResponseEntity<?> getSchedulesForUser(@PathVariable String email) {
