@@ -30,11 +30,11 @@ const ScheduleCard = (props) => {
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='en-gb'>
           <DateTimePicker
             closeOnSelect={true}
-            viewRenderers={{
-              hours: renderTimeViewClock,
-              minutes: renderTimeViewClock,
-              seconds: renderTimeViewClock,
-            }}
+            // viewRenderers={{
+            //   hours: renderTimeViewClock,
+            //   minutes: renderTimeViewClock,
+            //   seconds: renderTimeViewClock,
+            // }}
             sx={{ width: '25%' }}
             label="Time"
             value={props.time}

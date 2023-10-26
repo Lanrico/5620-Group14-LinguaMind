@@ -8,6 +8,7 @@ import { Link, useParams } from "react-router-dom";
 import img from '../../images/Unauthenticate.webp'
 import UserProfile from "../homePageTabs/userProfile";
 import AISchedule from "../homePageTabs/AISchedule";
+import AINotification from "../homePageTabs/AINotification";
 
 const HomePageTemplete = (props) => {
   const theme = useTheme();
@@ -51,7 +52,7 @@ const HomePageTemplete = (props) => {
                             </>) :
                             tab === "AI_notification" ?
                               (<>
-
+                                <AINotification />
                               </>) :
                               tab === "AI_email" ?
                                 (<>
