@@ -9,6 +9,7 @@ import img from '../../images/Unauthenticate.webp'
 import UserProfile from "../homePageTabs/userProfile";
 import AiTranslationTabPane from "../AiTranslationTabPane";
 import AiContentPolishTabPane from "../AiContentPolishTabPane";
+import AiEmailTabPane from "../AiEmailTabPane";
 
 const HomePageTemplete = (props) => {
   const theme = useTheme();
@@ -56,7 +57,7 @@ const HomePageTemplete = (props) => {
                               </>) :
                               tab === "AI_email" ?
                                 (<>
-
+                                  <AiEmailTabPane />
                                 </>) :
                                 tab === "AI_teaching_aid" ?
                                   (<>
