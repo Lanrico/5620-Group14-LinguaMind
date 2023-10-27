@@ -1,5 +1,5 @@
 // assets
-import { LoginOutlined, ProfileOutlined, HistoryOutlined, HeartOutlined, LikeOutlined } from '@ant-design/icons';
+import { LoginOutlined, ProfileOutlined, HistoryOutlined, HeartOutlined, LikeOutlined, TranslationOutlined, HighlightOutlined } from '@ant-design/icons';
 
 // icons
 const icons = {
@@ -7,7 +7,9 @@ const icons = {
     ProfileOutlined,
     HistoryOutlined,
     HeartOutlined,
-    LikeOutlined
+    LikeOutlined,
+    TranslationOutlined,
+    HighlightOutlined
 };
 
 // ==============================|| MENU ITEMS - EXTRA PAGES ||============================== //
@@ -22,7 +24,7 @@ const studentApps = {
             title: 'AI translation',
             type: 'item',
             url: 'AI_translation',
-            icon: icons.HistoryOutlined,
+            icon: icons.TranslationOutlined,
         },
         {
             id: 'AI_schedule',
@@ -36,7 +38,7 @@ const studentApps = {
             title: 'AI polish',
             type: 'item',
             url: 'AI_polish',
-            icon: icons.LikeOutlined,
+            icon: icons.HighlightOutlined,
         }
     ]
 };

@@ -7,6 +7,9 @@ import { AuthContext } from "../../context/authContext";
 import { Link, useParams } from "react-router-dom";
 import img from '../../images/Unauthenticate.webp'
 import UserProfile from "../homePageTabs/userProfile";
+import AiTranslationTabPane from "../AiTranslationTabPane";
+import AiContentPolishTabPane from "../AiContentPolishTabPane";
+import AiEmailTabPane from "../AiEmailTabPane";
 import AISchedule from "../homePageTabs/AISchedule";
 import AINotification from "../homePageTabs/AINotification";
 
@@ -36,7 +39,7 @@ const HomePageTemplete = (props) => {
                   {
                     tab === "AI_translation" ?
                       (<>
-
+                        <AiTranslationTabPane />
                       </>) :
                       tab === "AI_schedule" ?
                         (<>
@@ -44,7 +47,7 @@ const HomePageTemplete = (props) => {
                         </>) :
                         tab === "AI_polish" ?
                           (<>
-
+                            <AiContentPolishTabPane />
                           </>) :
                           tab === "profile" ?
                             (<>
@@ -56,7 +59,7 @@ const HomePageTemplete = (props) => {
                               </>) :
                               tab === "AI_email" ?
                                 (<>
-
+                                  <AiEmailTabPane />
                                 </>) :
                                 tab === "AI_teaching_aid" ?
                                   (<>
