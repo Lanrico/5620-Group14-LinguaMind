@@ -13,6 +13,7 @@ import AiEmailTabPane from "../AiEmailTabPane";
 import AISchedule from "../homePageTabs/AISchedule";
 import AINotification from "../homePageTabs/AINotification";
 
+
 const HomePageTemplete = (props) => {
   const theme = useTheme();
   const { tab } = useParams();

@@ -1,6 +1,7 @@
 package com.backend.project.repository;
 
 import com.backend.project.Service.AiHistoryService;
+import com.backend.project.Service.ScheduleService;
 import com.backend.project.model.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -24,10 +25,11 @@ import java.util.List;
 public class GPTRepository {
     @Autowired
     private AiHistoryService aiHistoryService;
-
+    @Autowired
+    private ScheduleService scheduleService;
     @Autowired
     private UserAccountRepository userAccountRepository;
-    private String apiKey = "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";
+    private String apiKey = "";
 
     private static final String ENDPOINT_URL = "https://api.openai.com/v1/chat/completions";  // Updated endpoint URL
 
@@ -123,7 +125,9 @@ public class GPTRepository {
         aiHistoryService.createHistory(email,aiHistory.getRoleType(),
                 aiHistory.getRequestContent(), aiHistory.getResponseResult(),
                 aiHistory.getGenerateDate(),aiHistory.getAdditionalInfo());
+
         if(gptRequestBody.getChoice().equals("SCHEDULE_GENERATOR")){
+            scheduleService.deleteSchedulesForUserByEmail(email);
             String data = response.getChoices().get(0).getMessage().getContent();
             List<GPTModel.Schedule> schedules = new ArrayList<>();
 
@@ -135,6 +139,7 @@ public class GPTRepository {
                 System.out.println(description);
                 String importance = columns[3];
                 schedules.add(new GPTModel.Schedule(time, description, importance));
+                scheduleService.createSchedule(email,time,description, importance);
             }
             System.out.println(schedules);
             return schedules;
