@@ -12,10 +12,10 @@ public class OpenAIService {
     @Autowired
     private GPTRepository gptRepository;
 
-    public String askGPT(String question) {
+    public Object askGPT(String email, GPTRequestBody requestBody) {
         // 假设每次请求中只有一个用户消息
         //String userQuestion = frontendRequest.getMessages().get(frontendRequest.getMessages().size() - 1).getContent();
-        return gptRepository.callGPT(question).getChoices().get(0).getMessage().getContent();
+        return gptRepository.callGPT(email, requestBody);
     }
 }
 
