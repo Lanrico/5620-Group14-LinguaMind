@@ -59,5 +59,4 @@ public class UserAccountController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
-
 }

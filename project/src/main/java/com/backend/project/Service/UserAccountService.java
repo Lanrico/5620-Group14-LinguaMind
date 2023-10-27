@@ -38,5 +38,4 @@ public class UserAccountService {
     public UserAccount findByEmail(String email) {
         return userAccountRepository.findByEmail(email);
     }
-
 }
