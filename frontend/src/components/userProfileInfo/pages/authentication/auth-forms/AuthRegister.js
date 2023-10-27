@@ -26,7 +26,7 @@ import { auth } from '../../../../../firebase';
 
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
-import userService from '../../../../../api/userService';
+import userService from '../../../../../services/userService.js';
 import HCaptchaBlock from '../../../../hCaptchaBlock';
 
 const AuthRegister = () => {

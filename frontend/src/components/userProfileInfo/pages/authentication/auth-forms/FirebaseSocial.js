@@ -9,7 +9,7 @@ import Twitter from '../../../assets/images/icons/twitter.svg';
 import Facebook from '../../../assets/images/icons/facebook.svg';
 import { GoogleAuthProvider, FacebookAuthProvider, signInWithPopup } from "firebase/auth";
 import { getAuth, signInWithRedirect } from "firebase/auth";
-import userService from '../../../../../api/userService';
+import userService from '../../../../../services/userService';
 import { AuthContext } from '../../../../../context/authContext';
 import { auth } from '../../../../../firebase';
 import { useNavigate } from 'react-router-dom';

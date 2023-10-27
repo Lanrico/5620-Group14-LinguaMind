@@ -34,17 +34,17 @@ const NavGroup = ({ item }) => {
 
     return (
         <List
-            subheader={
-                item.title &&
-                drawerOpen && (
-                    <Box sx={{ pl: 3, mb: 1.5 }}>
-                        <Typography variant="subtitle2" color="textSecondary">
-                            {item.title}
-                        </Typography>
-                        {/* only available in paid version */}
-                    </Box>
-                )
-            }
+            // subheader={
+            //     item.title &&
+            //     drawerOpen && (
+            //         <Box sx={{ pl: 3, mb: 1.5 }}>
+            //             <Typography variant="subtitle2" color="textSecondary">
+            //                 {item.title}
+            //             </Typography>
+            //             {/* only available in paid version */}
+            //         </Box>
+            //     )
+            // }
             sx={{ mb: drawerOpen ? 1.5 : 0, py: 0, zIndex: 0 }}
         >
             {navCollapse}

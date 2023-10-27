@@ -24,7 +24,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 
 import FirebaseSocial from './FirebaseSocial';
 import AnimateButton from '../../../components/@extended/AnimateButton';
-import userService from '../../../../../api/userService';
+import userService from '../../../../../services/userService.js';
 import { AuthContext } from '../../../../../context/authContext.js'
 import { auth } from '../../../../../firebase';
 import user from '../../../../../sampleData/user';

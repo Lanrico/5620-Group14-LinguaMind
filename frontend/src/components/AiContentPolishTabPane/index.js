@@ -25,8 +25,8 @@ const AiContentPolishTabPane = () => {
                 data: {
                     "model": "gpt-3.5-turbo-16k",
                     "messages": [
-                        {"role": "user", "content": `Hello! Can you paraphrase and polish the following text?`},
-                        {"role": "user", "content": inputText}
+                        { "role": "user", "content": `Hello! Can you paraphrase and polish the following text?` },
+                        { "role": "user", "content": inputText }
                     ],
                     "temperature": 1.0
                 },
@@ -45,7 +45,7 @@ const AiContentPolishTabPane = () => {
             }
 
             setParaphrasedText(resp.data.choices[0].message.content)
-        } catch(err) {
+        } catch (err) {
             console.error(err)
             message.error('Paraphrasing failed: ' + err.message || 'unknown error occurred')
         } finally {
@@ -55,24 +55,24 @@ const AiContentPolishTabPane = () => {
 
     return (
         <div style={{ display: 'flex', flexDirection: 'row' }}>
-        <div style={{ flex: 1, marginRight: '16px', minWidth: '50%', minHeight: '70%' }}>
-            <div style={{ fontSize: 14, margin: '8px 0 4px' }}>Text to be polished</div>
-            <Input.TextArea onChange={e => {
-                setInputText(e.target.value)
-            }} />
-    
-            <Button icon={<HighlightOutlined />} type="primary" style={{ marginTop: 8 }} loading={loading} onClick={handleParaphrase}>
-                Polish
-            </Button>
-        </div>
-    
-        {!loading && paraphrasedText && (
-            <div>
-                <div style={{ fontSize: 14, margin: '16px 0 8px' }}>Paraphrased text</div>
-                <div style={{ borderLeft: '4px solid lightgrey', paddingLeft: 8 }}>{paraphrasedText}</div>
+            <div style={{ flex: 1, marginRight: '16px', minWidth: '50%', minHeight: '70%' }}>
+                <div style={{ fontSize: 14, margin: '8px 0 4px' }}>Text to be polished</div>
+                <Input.TextArea onChange={e => {
+                    setInputText(e.target.value)
+                }} />
+
+                <Button icon={<HighlightOutlined />} type="primary" style={{ marginTop: 8 }} loading={loading} onClick={handleParaphrase}>
+                    Polish
+                </Button>
             </div>
-        )}
-    </div>
+
+            {!loading && paraphrasedText && (
+                <div>
+                    <div style={{ fontSize: 14, margin: '16px 0 8px' }}>Paraphrased text</div>
+                    <div style={{ borderLeft: '4px solid lightgrey', paddingLeft: 8 }}>{paraphrasedText}</div>
+                </div>
+            )}
+        </div>
     )
 }
 

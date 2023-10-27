@@ -6,18 +6,30 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import AnimateButton from '../userProfileInfo/components/@extended/AnimateButton';
 import CloseIcon from '@mui/icons-material/Close';
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
+import dayjs, { Dayjs } from 'dayjs';
+import adminUserService from '../../services/adminUserService';
+const UserProfile = ({ user }) => {
 
-const UserProfile = () => {
+  // {
+  //   "email": "example@163.com",
+  //   "username": "exampleUsername",
+  //   "password": "123456",
+  //   "firstname": "John",
+  //   "lastname": "Doe",
+  //   "phone": 1112222333,
+  //   "dob": "1989-12-31T13:00:00.000+00:00"
+  // }
 
   const authContext = useContext(AuthContext);
   console.log(authContext.userProfile);
   const labelWidth = 4;
-  const [name, setName] = React.useState(authContext.userProfile.name);
-  const [phone, setPhone] = React.useState(authContext.userProfile.phone);
+  const [name, setName] = React.useState(user.username ?? authContext.userProfile.name);
+  const [phone, setPhone] = React.useState(user.phone ?? authContext.userProfile.phone);
   const [bio, setBio] = React.useState(authContext.userProfile.bio);
   // const [birthDate, setBirthDate] = React.useState(authContext.userProfile.birthday);
-  const [birthDate, setBirthDate] = React.useState("01/01/2000");
+  const [birthDate, setBirthDate] = React.useState(dayjs(user.dob) ?? dayjs("01/01/2000"));
   const [openPassword, setOpenPassword] = React.useState(false);
+
 
   const handleSetName = (e) => {
     setName(e.target.value);
@@ -32,19 +44,28 @@ const UserProfile = () => {
   }
 
   const handleSave = () => {
-    const newUserProfile = authContext.userProfile;
-    newUserProfile.name = name;
-    newUserProfile.phone = phone;
-    newUserProfile.bio = bio;
-    newUserProfile.birthday = birthDate;
-    console.log(newUserProfile);
+    // const newUserProfile = authContext.userProfile;
+    // newUserProfile.name = name;
+    // newUserProfile.phone = phone;
+    // newUserProfile.bio = bio;
+    // newUserProfile.birthday = birthDate;
+    // console.log(newUserProfile);
 
-    authContext.handleSetUserProfile(newUserProfile);
+    // authContext.handleSetUserProfile(newUserProfile);
     // setOpenSuccess(true);
     /* eslint-disable no-restricted-globals */
     // location.reload()
     /* eslint-enable no-restricted-globals */
 
+
+    const updateUser = {
+      ...user,
+      username: name,
+      phone,
+      dob: birthDate,
+    }
+
+    adminUserService.updateUser(updateUser).then(({ data }) => alert(JSON.stringify(data)));
   }
 
   const handleSavePassword = () => {
@@ -118,9 +139,10 @@ const UserProfile = () => {
         <Grid item>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DatePicker
-              // value={birthDate}
+              value={birthDate}
               onChange={(newValue) => {
                 setBirthDate(newValue);
+                // alert(newValue)
               }}
               inputFormat="DD/MM/YYYY"
               openTo="year"
