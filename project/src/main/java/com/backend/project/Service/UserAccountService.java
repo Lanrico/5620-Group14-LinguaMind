@@ -35,4 +35,7 @@ public class UserAccountService {
 
         return userAccountRepository.save(userAccount);
     }
+    public UserAccount findByEmail(String email) {
+        return userAccountRepository.findByEmail(email);
+    }
 }
