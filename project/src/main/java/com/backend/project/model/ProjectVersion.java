@@ -2,6 +2,7 @@ package com.backend.project.model;
 
 import lombok.Data;
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -23,5 +24,5 @@ public class ProjectVersion {
     private String version;
 
     @Column(name = "update_timestamp")
-    private Date updateTimestamp;
+    private LocalDateTime updateTimestamp;
 }

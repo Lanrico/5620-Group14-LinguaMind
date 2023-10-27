@@ -27,12 +27,9 @@ public class Schedule {
 
     private String description;
 
-    @Enumerated(EnumType.STRING)
-    private Importance importance;
+    @Column(name = "importance", length = 10)
+    private String importance;
 
-    public enum Importance {
-        LOW, MEDIUM_LOW, MEDIUM, MEDIUM_HIGH, HIGH
-    }
 }
 
 

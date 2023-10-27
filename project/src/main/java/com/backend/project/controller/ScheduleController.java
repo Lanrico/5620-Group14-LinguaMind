@@ -45,5 +45,16 @@ public class ScheduleController {
         }
     }
 
-    // ... other controller methods...
+    @DeleteMapping("/user/{email}")
+    public ResponseEntity<?> deleteSchedulesForUser(@PathVariable String email) {
+        try {
+            scheduleService.deleteSchedulesForUserByEmail(email);
+            Map<String, String> response = new HashMap<>();
+            response.put("message", "Schedules deleted successfully for user: " + email);
+            return ResponseEntity.ok(response);
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
 }
