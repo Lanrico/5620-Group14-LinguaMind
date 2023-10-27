@@ -32,7 +32,7 @@ const AiEmailTabPane = () => {
                 },
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer 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'
+                    'Authorization': 'Bearer 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'
                 }
             })
 
