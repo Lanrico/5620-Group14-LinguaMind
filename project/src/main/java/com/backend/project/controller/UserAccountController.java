@@ -47,4 +47,17 @@ public class UserAccountController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+    @GetMapping("/findByEmail/{email}")
+    public ResponseEntity<?> findByEmail(@PathVariable String email) {
+        try {
+            UserAccount user = userAccountService.findByEmail(email);
+            if (user == null) {
+                return ResponseEntity.notFound().build();
+            }
+            return ResponseEntity.ok(user);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
 }
