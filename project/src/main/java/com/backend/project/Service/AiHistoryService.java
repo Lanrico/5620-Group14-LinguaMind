@@ -1,6 +1,7 @@
 package com.backend.project.Service;
 
 import com.backend.project.model.AiHistory;
+import com.backend.project.model.AiHistoryProjection;
 import com.backend.project.model.UserAccount;
 import com.backend.project.repository.AiHistoryRepository;
 import com.backend.project.repository.UserAccountRepository;
@@ -43,6 +44,7 @@ public class AiHistoryService {
         return aiHistoryRepository.save(aiHistory);
     }
 
-
-    // ... other service methods as needed...
+    public List<AiHistoryProjection> getHistorySummary() {
+        return aiHistoryRepository.querylist();
+    }
 }

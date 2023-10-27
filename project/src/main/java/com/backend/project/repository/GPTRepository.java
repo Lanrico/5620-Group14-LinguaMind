@@ -29,7 +29,8 @@ public class GPTRepository {
     private ScheduleService scheduleService;
     @Autowired
     private UserAccountRepository userAccountRepository;
-    private String apiKey = "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";
+
+    private String apiKey = "";
 
     private static final String ENDPOINT_URL = "https://api.openai.com/v1/chat/completions";  // Updated endpoint URL
 

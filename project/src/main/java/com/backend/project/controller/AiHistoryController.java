@@ -2,12 +2,11 @@ package com.backend.project.controller;
 
 import com.backend.project.Service.AiHistoryService;
 import com.backend.project.model.AiHistory;
+import com.backend.project.model.AiHistoryProjection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -35,6 +34,11 @@ public class AiHistoryController {
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
+    }
+
+    @GetMapping("/getquerylist")
+    public List<AiHistoryProjection>querylist(){
+        return aiHistoryService.getHistorySummary();
     }
 
     // ... other controller methods as needed...
