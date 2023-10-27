@@ -12,33 +12,40 @@ const icons = {
 
 // ==============================|| MENU ITEMS - EXTRA PAGES ||============================== //
 
-const interest = {
-    id: 'interest',
-    title: 'Interest',
+const teacherApps = {
+    id: 'Apps',
+    title: 'Apps',
     type: 'group',
     children: [
         {
-            id: 'history',
-            title: 'History',
+            id: 'AI_notification',
+            title: 'AI notification',
             type: 'item',
-            url: 'history',
+            url: 'AI_notification',
             icon: icons.HistoryOutlined,
         },
         {
-            id: 'favourite',
-            title: 'Favourite',
+            id: 'AI_schedule',
+            title: 'AI schedule',
             type: 'item',
-            url: 'favourite',
+            url: 'AI_schedule',
             icon: icons.HeartOutlined,
         },
         {
-            id: 'recommendation',
-            title: 'Recommendation',
+            id: 'AI_email',
+            title: 'AI email',
             type: 'item',
-            url: 'recommendation',
+            url: 'AI_email',
+            icon: icons.LikeOutlined,
+        },
+        {
+            id: 'AI_teaching_aid',
+            title: 'AI teaching aid',
+            type: 'item',
+            url: 'AI_teaching_aid',
             icon: icons.LikeOutlined,
         }
     ]
 };
 
-export default interest;
+export default teacherApps;
