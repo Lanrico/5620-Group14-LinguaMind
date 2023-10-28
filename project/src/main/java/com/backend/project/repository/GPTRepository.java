@@ -29,7 +29,6 @@ public class GPTRepository {
     private ScheduleService scheduleService;
     @Autowired
     private UserAccountRepository userAccountRepository;
-
     private String apiKey = "";
 
     private static final String ENDPOINT_URL = "https://api.openai.com/v1/chat/completions";  // Updated endpoint URL
@@ -137,6 +136,7 @@ public class GPTRepository {
                 String[] columns = rows[i].split("\\|");
                 LocalDateTime time = LocalDateTime.parse(columns[1]);
                 String description = columns[2];
+                System.out.println(description);
                 String importance = columns[3];
                 schedules.add(new GPTModel.Schedule(time, description, importance));
                 scheduleService.createSchedule(email,time,description, importance);

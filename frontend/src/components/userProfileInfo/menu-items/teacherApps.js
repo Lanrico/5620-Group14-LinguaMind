@@ -1,5 +1,5 @@
 // assets
-import { LoginOutlined, ProfileOutlined, HistoryOutlined, HeartOutlined, LikeOutlined } from '@ant-design/icons';
+import { LoginOutlined, ProfileOutlined, HistoryOutlined, HeartOutlined, LikeOutlined, MailOutlined } from '@ant-design/icons';
 
 // icons
 const icons = {
@@ -7,7 +7,8 @@ const icons = {
     ProfileOutlined,
     HistoryOutlined,
     HeartOutlined,
-    LikeOutlined
+    LikeOutlined,
+    MailOutlined
 };
 
 // ==============================|| MENU ITEMS - EXTRA PAGES ||============================== //
@@ -36,7 +37,7 @@ const teacherApps = {
             title: 'AI email',
             type: 'item',
             url: 'AI_email',
-            icon: icons.LikeOutlined,
+            icon: icons.MailOutlined,
         },
         {
             id: 'AI_teaching_aid',

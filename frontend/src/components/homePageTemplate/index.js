@@ -9,6 +9,10 @@ import img from '../../images/Unauthenticate.webp'
 import UserProfile from "../homePageTabs/userProfile";
 import AiTranslationTabPane from "../AiTranslationTabPane";
 import AiContentPolishTabPane from "../AiContentPolishTabPane";
+import AiEmailTabPane from "../AiEmailTabPane";
+import AISchedule from "../homePageTabs/AISchedule";
+import AINotification from "../homePageTabs/AINotification";
+
 
 const HomePageTemplete = (props) => {
   const theme = useTheme();
@@ -40,7 +44,7 @@ const HomePageTemplete = (props) => {
                       </>) :
                       tab === "AI_schedule" ?
                         (<>
-
+                          <AISchedule />
                         </>) :
                         tab === "AI_polish" ?
                           (<>
@@ -52,11 +56,11 @@ const HomePageTemplete = (props) => {
                             </>) :
                             tab === "AI_notification" ?
                               (<>
-
+                                <AINotification />
                               </>) :
                               tab === "AI_email" ?
                                 (<>
-
+                                  <AiEmailTabPane />
                                 </>) :
                                 tab === "AI_teaching_aid" ?
                                   (<>
