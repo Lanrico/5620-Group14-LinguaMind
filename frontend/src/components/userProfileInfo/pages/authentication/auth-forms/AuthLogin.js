@@ -24,7 +24,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 
 import FirebaseSocial from './FirebaseSocial';
 import AnimateButton from '../../../components/@extended/AnimateButton';
-import userService from '../../../../../api/userService';
+import userService from '../../../../../services/userService.js';
 import { AuthContext } from '../../../../../context/authContext.js'
 import { auth } from '../../../../../firebase';
 import user from '../../../../../sampleData/user';
@@ -84,21 +84,16 @@ const AuthLogin = () => {
           try {
             setStatus({ success: false });
             setSubmitting(false);
-            console.log(values)
-            console.log(captchaToken)
             signInWithEmailAndPassword(auth, values.email, values.password)
               .then((userCredential) => {
                 // Signed in 
-                // const user = userCredential.user;
-                // userService.getByEmail(user.email)
-                //   .then((response) => {
-                //     context.signIn(response.data, values.rememberMe)
-                //     console.log("qwqweqweqwe")
-                //     navigate('/homepage')
-                //   })
-                context.signIn(user, values.rememberMe)
-                // navigate('/main/1')
-                navigate(`/main/${user.email}`)
+                const user = userCredential.user;
+                console.log(user.email)
+                userService.findUserByEmail(user.email)
+                  .then((response) => {
+                    context.signIn(response.data, values.rememberMe)
+                    navigate(`/main/${user.email}`)
+                  })
               })
               .catch((error) => {
                 console.log(error);

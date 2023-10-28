@@ -12,6 +12,8 @@ import LoginPage from "./pages/loginPage";
 import HomePage from "./pages/homePage";
 import { Provider } from "react-redux";
 
+import './assets/css/global.css';
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -25,7 +27,8 @@ const queryClient = new QueryClient({
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#3accc0',
+      main: '#d1113d',
+      // main: '#3accc0',
       contrastText: '#fff',
     },
     secondary: {
@@ -43,7 +46,7 @@ const App = () => {
             <AuthContext>
               <Routes>
                 <Route path="" element={<LoginPage />} />
-                {/* <Route path="/register" element={<SignUpPage />} /> */}
+                <Route path="*" element={<LoginPage />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<SignUpPage />} />
                 <Route path="/main/:user_id/:tab?" element={<HomePage />} />

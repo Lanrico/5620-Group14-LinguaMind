@@ -26,8 +26,8 @@ const AiTranslationTabPane = () => {
                 data: {
                     "model": "gpt-3.5-turbo-16k",
                     "messages": [
-                        {"role": "user", "content": `Hello! Can you translate the following text to ${targetLang}?`},
-                        {"role": "user", "content": inputText}
+                        { "role": "user", "content": `Hello! Can you translate the following text to ${targetLang}?` },
+                        { "role": "user", "content": inputText }
                     ],
                     "temperature": 1.0
                 },
@@ -46,7 +46,7 @@ const AiTranslationTabPane = () => {
             }
 
             setTranslatedText(resp.data.choices[0].message.content)
-        } catch(err) {
+        } catch (err) {
             console.error(err)
             message.error('Translation failed: ' + err.message || 'unknown error occurred')
         } finally {

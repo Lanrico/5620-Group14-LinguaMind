@@ -19,10 +19,10 @@ public class UserAccount {
     private int phone;
     private Date dob;
     @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "ENUM('student', 'teacher')")
+    @Column(columnDefinition = "ENUM('student', 'teacher', 'admin')")
     private UserType type;
 
     public enum UserType {
-        student, teacher
+        student, teacher, admin
     }
 }

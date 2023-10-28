@@ -1,5 +1,5 @@
 import React, { useState, createContext } from "react";
-import userService from "../api/userService";
+import userService from "../services/userService";
 
 export const AuthContext = createContext(null);
 
@@ -9,7 +9,6 @@ const AuthContextProvider = (props) => {
   const [userProfile, setUserProfile] = useState(props.initialUserProfile ? props.initialUserProfile : {});
 
   const signIn = (user, rm) => {
-
     if (rm) {
       localStorage.setItem('userProfile', JSON.stringify(user));
     }

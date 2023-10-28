@@ -13,12 +13,29 @@ import AiEmailTabPane from "../AiEmailTabPane";
 import AISchedule from "../homePageTabs/AISchedule";
 import AINotification from "../homePageTabs/AINotification";
 
+import Profile from "../homePageTabs/profile/profile";
+import Dashboard from "../homePageTabs/dashboard";
+import VersionPane from "../homePageTabs/version";
 
 const HomePageTemplete = (props) => {
   const theme = useTheme();
   const { tab } = useParams();
   const authContext = useContext(AuthContext);
 
+  const TabComponent = () => {
+    switch (tab) {
+      case 'AI_translation': return <AiTranslationTabPane />;
+      case 'profile': return <UserProfile />;
+      case 'profile-mgt': return <Profile />;
+      case 'dashboard': return <Dashboard />;
+      case 'version': return <VersionPane />;
+      case 'AI_polish': return <AiContentPolishTabPane />;
+      case 'AI_schedule': return <AISchedule user={props.user} />;
+      case 'AI_notification': return <AINotification />;
+      case 'AI_email': return <AiEmailTabPane />;
+      default: return <></>;
+    }
+  }
 
   console.log(props.user)
   return (
@@ -28,7 +45,7 @@ const HomePageTemplete = (props) => {
           <Paper sx={{ backgroundColor: theme.palette.primary.light }} elevation={0}>
             <Paper sx={{ backgroundColor: theme.palette.primary.main, height: 200, display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
               <Typography textAlign={"center"} color={theme.palette.primary.contrastText} variant="h2">
-                Welcome, {props.user.name}
+                Welcome, {props.user.username}
               </Typography>
             </Paper>
             <Paper elevation={0} sx={{ borderRadius: 0 }}>
@@ -37,49 +54,7 @@ const HomePageTemplete = (props) => {
                   <DrawerContent />
                 </Grid>
                 <Grid xs={9} p={3}>
-                  {
-                    tab === "AI_translation" ?
-                      (<>
-                        <AiTranslationTabPane />
-                      </>) :
-                      tab === "AI_schedule" ?
-                        (<>
-                          <AISchedule />
-                        </>) :
-                        tab === "AI_polish" ?
-                          (<>
-                            <AiContentPolishTabPane />
-                          </>) :
-                          tab === "profile" ?
-                            (<>
-                              <UserProfile />
-                            </>) :
-                            tab === "AI_notification" ?
-                              (<>
-                                <AINotification />
-                              </>) :
-                              tab === "AI_email" ?
-                                (<>
-                                  <AiEmailTabPane />
-                                </>) :
-                                tab === "AI_teaching_aid" ?
-                                  (<>
-
-                                  </>) :
-                                  tab === "maintenance" ?
-                                    (<>
-
-                                    </>) :
-                                    tab === "permission_management" ?
-                                      (<>
-
-                                      </>) :
-                                      tab === "software_update" ?
-                                        (<>
-
-                                        </>) :
-                                        <UserProfile />
-                  }
+                  {TabComponent()}
                 </Grid>
               </Grid>
             </Paper>

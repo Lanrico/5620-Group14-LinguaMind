@@ -1,5 +1,5 @@
 // assets
-import { LoginOutlined, ProfileOutlined, HistoryOutlined, HeartOutlined, LikeOutlined } from '@ant-design/icons';
+import { LoginOutlined, ProfileOutlined, HistoryOutlined, HeartOutlined, LikeOutlined, ReconciliationOutlined, FormOutlined, CloudUploadOutlined } from '@ant-design/icons';
 
 // icons
 const icons = {
@@ -17,27 +17,48 @@ const adminApps = {
     title: 'Apps',
     type: 'group',
     children: [
+        // {
+        //     id: 'maintenance',
+        //     title: 'Maintenance',
+        //     type: 'item',
+        //     url: 'maintenance',
+        //     icon: icons.HistoryOutlined,
+        // },
+        // {
+        //     id: 'permission_management',
+        //     title: 'Permission management',
+        //     type: 'item',
+        //     url: 'permission_management',
+        //     icon: icons.HeartOutlined,
+        // },
+        // {
+        //     id: 'software_update',
+        //     title: 'Software update',
+        //     type: 'item',
+        //     url: 'software_update',
+        //     icon: icons.LikeOutlined,
+        // },
         {
-            id: 'maintenance',
-            title: 'Maintenance',
+            id: 'dashboard',
+            title: 'Dashboard',
             type: 'item',
-            url: 'maintenance',
-            icon: icons.HistoryOutlined,
+            url: 'dashboard',
+            icon: ReconciliationOutlined,
         },
         {
-            id: 'permission_management',
-            title: 'Permission management',
+            id: 'profile-mgt',
+            title: 'Account MGT',
             type: 'item',
-            url: 'permission_management',
-            icon: icons.HeartOutlined,
+            url: 'profile-mgt',
+            icon: FormOutlined,
         },
         {
-            id: 'software_update',
-            title: 'Software update',
+            id: 'version',
+            title: 'Version',
             type: 'item',
-            url: 'software_update',
-            icon: icons.LikeOutlined,
-        }
+            url: 'version',
+            icon: CloudUploadOutlined,
+        },
     ]
 };
 
