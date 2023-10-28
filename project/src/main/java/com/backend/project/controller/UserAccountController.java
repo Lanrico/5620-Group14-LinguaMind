@@ -59,5 +59,13 @@ public class UserAccountController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
-
+    @GetMapping("/getTypeByEmail/{email}")
+    public ResponseEntity<?> getTypeByEmail(@PathVariable String email) {
+        try {
+            UserAccount.UserType userType = userAccountService.getTypeByEmail(email);
+            return ResponseEntity.ok(userType);
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
 }

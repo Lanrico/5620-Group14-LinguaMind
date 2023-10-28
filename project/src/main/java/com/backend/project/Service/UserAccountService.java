@@ -38,5 +38,11 @@ public class UserAccountService {
     public UserAccount findByEmail(String email) {
         return userAccountRepository.findByEmail(email);
     }
-
+    public UserAccount.UserType getTypeByEmail(String email) {
+        UserAccount user = userAccountRepository.findByEmail(email);
+        if(user == null) {
+            throw new RuntimeException("Error: User not found!");
+        }
+        return user.getType();
+    }
 }
