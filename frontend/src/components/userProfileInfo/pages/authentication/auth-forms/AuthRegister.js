@@ -5,12 +5,16 @@ import {
   Button,
   Divider,
   FormControl,
+  FormControlLabel,
   FormHelperText,
+  FormLabel,
   Grid,
   IconButton,
   InputAdornment,
   InputLabel,
   OutlinedInput,
+  Radio,
+  RadioGroup,
   Stack,
   Typography
 } from '@mui/material';
@@ -66,6 +70,7 @@ const AuthRegister = () => {
           email: '',
           password: '',
           confirm: '',
+          type: 'student',
           submit: null
         }}
         validationSchema={Yup.object().shape({
@@ -75,7 +80,8 @@ const AuthRegister = () => {
           password: Yup.string().max(255).required('Password is required'),
           confirm: Yup.string()
             .oneOf([Yup.ref('password'), null], "The two passwords entered are inconsistent")
-            .required('Confirm password is required')
+            .required('Confirm password is required'),
+          type: Yup.string().required('Type is required'),
         })}
         onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
           try {
@@ -88,15 +94,19 @@ const AuthRegister = () => {
                 const user = userCredential.user;
                 console.log(user)
                 userService.create({
-                  name: values.username,
+                  username: values.username,
+                  firstname: values.username,
+                  lastname: values.username,
                   email: user.email,
-                  type: 0
+                  password: values.password,
+                  type: values.type,
+                  dob: new Date(),
                 })
                   .then((response) => {
                     console.log(response.data)
                     context.signIn(response.data, true)
+                    // navigate(`/main/${user.email}`)
                   })
-                navigate("/main/1")
                 // ...
               })
               .catch((error) => {
@@ -231,6 +241,27 @@ const AuthRegister = () => {
                   )}
                 </Stack>
               </Grid>
+              <Grid item xs={12}>
+                <Stack spacing={0}>
+                  <FormLabel>Type</FormLabel>
+                  <RadioGroup
+                    row
+                    value={values.type}
+                    onBlur={handleBlur}
+                    onChange={handleChange}
+                    name="type"
+                  >
+                    <FormControlLabel value="STUDENT" control={<Radio />} label="student" />
+                    <FormControlLabel value="TEACHER" control={<Radio />} label="teacher" />
+                  </RadioGroup>
+                  {touched.type && errors.type && (
+                    <FormHelperText error>
+                      {errors.confirm}
+                    </FormHelperText>
+                  )}
+                </Stack>
+              </Grid>
+
               {errors.submit && (
                 <Grid item xs={12}>
                   <FormHelperText error>{errors.submit}</FormHelperText>

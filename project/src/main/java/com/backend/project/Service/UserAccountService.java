@@ -24,7 +24,7 @@ public class UserAccountService {
         if(userAccountRepository.existsByEmail(userAccount.getEmail())) {
             throw new RuntimeException("Error: Email is already in use!");
         }
-
+        
         return userAccountRepository.save(userAccount);
     }
 

@@ -84,21 +84,21 @@ const AuthLogin = () => {
           try {
             setStatus({ success: false });
             setSubmitting(false);
-            console.log(values)
-            console.log(captchaToken)
             signInWithEmailAndPassword(auth, values.email, values.password)
               .then((userCredential) => {
                 // Signed in 
-                // const user = userCredential.user;
-                // userService.getByEmail(user.email)
-                //   .then((response) => {
-                //     context.signIn(response.data, values.rememberMe)
-                //     console.log("qwqweqweqwe")
-                //     navigate('/homepage')
-                //   })
-                context.signIn(user, values.rememberMe)
+                const user = userCredential.user;
+                console.log(user.email)
+                userService.findUserByEmail(user.email)
+                  .then((response) => {
+                    context.signIn(response.data, values.rememberMe)
+                    console.log("qwqweqweqwe")
+                    // navigate('/homepage')
+                    navigate(`/main/${user.email}`)
+                  })
+                // context.signIn(user, values.rememberMe)
                 // navigate('/main/1')
-                navigate(`/main/${user.email}`)
+                // navigate(`/main/${user.email}`)
               })
               .catch((error) => {
                 console.log(error);

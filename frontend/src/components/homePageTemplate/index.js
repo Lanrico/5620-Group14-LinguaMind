@@ -46,7 +46,7 @@ const HomePageTemplete = (props) => {
           <Paper sx={{ backgroundColor: theme.palette.primary.light }} elevation={0}>
             <Paper sx={{ backgroundColor: theme.palette.primary.main, height: 200, display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
               <Typography textAlign={"center"} color={theme.palette.primary.contrastText} variant="h2">
-                Welcome, {props.user.name}
+                Welcome, {props.user.username}
               </Typography>
             </Paper>
             <Paper elevation={0} sx={{ borderRadius: 0 }}>
@@ -55,48 +55,6 @@ const HomePageTemplete = (props) => {
                   <DrawerContent />
                 </Grid>
                 <Grid xs={9} p={3}>
-                  {/* {
-                    tab === "AI_translation" ?
-                      (<>
-                        <AiTranslationTabPane />
-                      </>) :
-                      tab === "AI_schedule" ?
-                        (<>
-                        </>) :
-                        tab === "AI_polish" ?
-                          (<>
-                            <AiContentPolishTabPane />
-                          </>) :
-                          tab === "profile" ?
-                            (<>
-                              <UserProfile />
-                            </>) :
-                            tab === "AI_notification" ?
-                              (<>
-
-                              </>) :
-                              tab === "AI_email" ?
-                                (<>
-
-                                </>) :
-                                tab === "AI_teaching_aid" ?
-                                  (<>
-
-                                  </>) :
-                                  tab === "maintenance" ?
-                                    (<>
-
-                                    </>) :
-                                    tab === "permission_management" ?
-                                      (<>
-
-                                      </>) :
-                                      tab === "software_update" ?
-                                        (<>
-
-                                        </>) :
-                                        <UserProfile />
-                  } */}
                   {TabComponent()}
                 </Grid>
               </Grid>

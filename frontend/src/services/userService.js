@@ -11,8 +11,11 @@ class UserService {
   async showAll() {
     return await client.get(`/users/showAll`);
   }
-  async create(version) {
-    return await client.post(`/versions/create`, version);
+  async findUserByEmail(email) {
+    return await client.get(`/users/findByEmail/${email}`);
+  }
+  async create(user) {
+    return await client.post(`/users/create`, user);
   }
 }
 
