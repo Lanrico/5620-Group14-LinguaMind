@@ -37,13 +37,6 @@ const teacherApps = {
             type: 'item',
             url: 'AI_email',
             icon: icons.LikeOutlined,
-        },
-        {
-            id: 'AI_teaching_aid',
-            title: 'AI teaching aid',
-            type: 'item',
-            url: 'AI_teaching_aid',
-            icon: icons.LikeOutlined,
         }
     ]
 };

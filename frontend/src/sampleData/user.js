@@ -1,7 +1,7 @@
 const user = {
-  email: "qwe@123.com",
-  name: "qwe",
-  type: "admin",
+  email: "jgl228298909@gmail.com",
+  username: "jgl228298909@gmail.com",
+  type: "student",
 }
 
 export default user;

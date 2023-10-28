@@ -1,11 +1,9 @@
-import { useContext } from 'react';
-
 // assets
-import { BarsOutlined } from '@ant-design/icons';
+import { LogoutOutlined } from '@ant-design/icons';
 
 // icons
 const icons = {
-    BarsOutlined
+    LogoutOutlined
 };
 
 // ==============================|| MENU ITEMS - DASHBOARD ||============================== //
@@ -15,11 +13,11 @@ const userProfile = {
     type: 'group',
     children: [
         {
-            id: 'Profile',
-            title: 'My profile',
+            id: 'Logout',
+            title: 'Logout',
             type: 'item',
-            url: 'profile',
-            icon: icons.BarsOutlined,
+            url: '123/123123/123',
+            icon: icons.LogoutOutlined,
             breadcrumbs: false
         }
     ]

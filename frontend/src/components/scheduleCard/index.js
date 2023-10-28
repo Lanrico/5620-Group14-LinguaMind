@@ -9,13 +9,18 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import LockIcon from '@mui/icons-material/Lock';
 
-const ScheduleCard = (props) => {
+const ScheduleCard = ({ data, setData, index }) => {
   const theme = useTheme();
   const [lock, setLock] = useState(true);
   const [remove, setRemove] = useState(false);
-  const [description, setDescription] = useState(props.description);
+  const [description, setDescription] = useState(data.description);
   const handleRemove = () => {
     setRemove(true);
+    setData(prev => {
+      const newCardsData = [...prev];
+      newCardsData[index].remove = true;
+      return newCardsData;
+    });
   }
 
   const importanceColor = {
@@ -37,21 +42,33 @@ const ScheduleCard = (props) => {
             // }}
             sx={{ width: '25%' }}
             label="Time"
-            value={props.time}
+            value={data.time}
             focused
             disabled={lock}
+            onChange={(newValue) => setData(prev => {
+              const newCardsData = [...prev];
+              newCardsData[index].time = newValue;
+              return newCardsData;
+            })}
           />
         </LocalizationProvider>
         <TextField
           label="Description"
-          color={importanceColor[props.importance]}
+          color={importanceColor[data.importance]}
           variant="standard"
           sx={{ width: '50%' }}
           InputProps={{
             readOnly: lock,
           }}
           focused
-          onChange={(e) => setDescription(e.target.value)}
+          onChange={(e) => {
+            setDescription(e.target.value)
+            setData(prev => {
+              const newCardsData = [...prev];
+              newCardsData[index].description = e.target.value;
+              return newCardsData;
+            });
+          }}
           value={description}
         />
         <div style={{ marginLeft: 'auto' }} >

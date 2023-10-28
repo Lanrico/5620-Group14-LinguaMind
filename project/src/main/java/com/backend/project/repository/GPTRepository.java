@@ -29,7 +29,7 @@ public class GPTRepository {
     private ScheduleService scheduleService;
     @Autowired
     private UserAccountRepository userAccountRepository;
-    private String apiKey = "";
+    private String apiKey = "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";
 
     private static final String ENDPOINT_URL = "https://api.openai.com/v1/chat/completions";  // Updated endpoint URL
 
@@ -53,7 +53,7 @@ public class GPTRepository {
             systemMessage.setContent("You now act as an online assistant for schedule management, " +
                     "please transfer the message below to a schedule management timetable with a format like this:" +
                     "|time|description|importance, the time should have formatt : yyyy-mm-ddThh:mm " +
-                    "you should evaluate the importance of each task and give it high or low or medium importance\n" +
+                    "you should evaluate the importance of each task and give it high or low or medium importance, only use the word 'high' or 'low' or 'medium'\n" +
                     "and sort it by time ascend\n" +
                     "do not output any other text");
         }

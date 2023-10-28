@@ -7,7 +7,7 @@ import userProfile from './userProfile';
 
 // ==============================|| MENU ITEMS ||============================== //
 const menuItems = {
-    adminItems: [adminApps],
+    adminItems: [userProfile, adminApps],
     studentItems: [userProfile, studentApps],
     teacherItems: [userProfile, teacherApps]
     // items: [userProfile, studentApps, config, support],

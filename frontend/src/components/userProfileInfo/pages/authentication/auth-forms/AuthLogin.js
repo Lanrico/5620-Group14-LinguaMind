@@ -92,13 +92,8 @@ const AuthLogin = () => {
                 userService.findUserByEmail(user.email)
                   .then((response) => {
                     context.signIn(response.data, values.rememberMe)
-                    console.log("qwqweqweqwe")
-                    // navigate('/homepage')
                     navigate(`/main/${user.email}`)
                   })
-                // context.signIn(user, values.rememberMe)
-                // navigate('/main/1')
-                // navigate(`/main/${user.email}`)
               })
               .catch((error) => {
                 console.log(error);

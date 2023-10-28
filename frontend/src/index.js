@@ -46,6 +46,7 @@ const App = () => {
             <AuthContext>
               <Routes>
                 <Route path="" element={<LoginPage />} />
+                <Route path="*" element={<LoginPage />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<SignUpPage />} />
                 <Route path="/main/:user_id/:tab?" element={<HomePage />} />
