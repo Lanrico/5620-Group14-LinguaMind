@@ -30,6 +30,9 @@ const HomePageTemplete = (props) => {
       case 'dashboard': return <Dashboard />;
       case 'version': return <VersionPane />;
       case 'AI_polish': return <AiContentPolishTabPane />;
+      case 'AI_schedule': return <AISchedule />;
+      case 'AI_notification': return <AINotification />;
+      case 'AI_email': return <AiEmailTabPane />;
       default: return <></>;
     }
   }
