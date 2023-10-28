@@ -93,7 +93,7 @@ const AuthRegister = () => {
                 // Signed in 
                 const user = userCredential.user;
                 console.log(user)
-                userService.create({
+                let userObj = {
                   username: values.username,
                   firstname: values.username,
                   lastname: values.username,
@@ -101,11 +101,12 @@ const AuthRegister = () => {
                   password: values.password,
                   type: values.type,
                   dob: new Date(),
-                })
+                }
+                userService.create(userObj)
                   .then((response) => {
-                    console.log(response.data)
-                    context.signIn(response.data, true)
-                    // navigate(`/main/${user.email}`)
+                    console.log(userObj)
+                    context.signIn(userObj, true)
+                    navigate(`/main/${user.email}`)
                   })
                 // ...
               })
@@ -251,8 +252,8 @@ const AuthRegister = () => {
                     onChange={handleChange}
                     name="type"
                   >
-                    <FormControlLabel value="STUDENT" control={<Radio />} label="student" />
-                    <FormControlLabel value="TEACHER" control={<Radio />} label="teacher" />
+                    <FormControlLabel value="student" control={<Radio />} label="student" />
+                    <FormControlLabel value="teacher" control={<Radio />} label="teacher" />
                   </RadioGroup>
                   {touched.type && errors.type && (
                     <FormHelperText error>
